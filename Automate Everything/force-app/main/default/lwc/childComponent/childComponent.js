@@ -1,5 +1,15 @@
-import { LightningElement,api} from 'lwc';
+import { LightningElement, track} from 'lwc';
 
 export default class ChildComponent extends LightningElement {
-    @api message =''
+    @track trailblazer='';
+    
+
+    handleChange(event){
+
+        this.trailblazer = event.target.value;
+
+        const evt = new CustomEvent('myevent', {detail : this.trailblazer});
+
+        this.dispatchEvent(evt);
+    }
 }
